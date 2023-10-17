@@ -7,6 +7,8 @@ public class playerController : MonoBehaviour
     public Animator animator;
     public Rigidbody2D rb;
     public float speed;
+    public gameManager gameManager;
+
     private Vector2 movement;
     void Start()
     {
@@ -20,6 +22,8 @@ public class playerController : MonoBehaviour
         movement.y = Input.GetAxisRaw("Vertical");
 
         animator.SetBool("isrun", (movement.x != 0 || movement.y != 0));
+
+        shooter();
     }
 
     private void FixedUpdate()
@@ -35,4 +39,15 @@ public class playerController : MonoBehaviour
             (movement.x > 0)? Mathf.Abs(scalex): Mathf.Abs(scalex) * -1
             , 1f);
     }
+
+    public void shooter()
+    {
+        if (Input.GetMouseButtonDown(1))
+        {
+            Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            pos.z = 0f;
+            gameManager.shooting_player(pos);
+        }
+    }
+
 }

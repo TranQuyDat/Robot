@@ -45,7 +45,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 48
@@ -440,28 +440,20 @@ TextureImporter:
         x: 320
         y: 112
         width: 48
-        height: 96
+        height: 48
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -13, y: 48}
-        - {x: -24, y: 44}
-        - {x: -24, y: -46}
-        - {x: -22, y: -48}
-        - {x: 20, y: -48}
-        - {x: 24, y: -47}
-        - {x: 24, y: 46}
-        - {x: 16, y: 48}
+      - - {x: -24, y: 24}
+        - {x: -24, y: -24}
+        - {x: 24, y: -24}
+        - {x: 24, y: 24}
       physicsShape:
-      - - {x: -13, y: 48}
-        - {x: -24, y: 44}
-        - {x: -24, y: -46}
-        - {x: -22, y: -48}
-        - {x: 20, y: -48}
-        - {x: 24, y: -47}
-        - {x: 24, y: 46}
-        - {x: 16, y: 48}
+      - - {x: -24, y: 24}
+        - {x: -24, y: -24}
+        - {x: 24, y: -24}
+        - {x: 24, y: 24}
       tessellationDetail: 0
       bones: []
       spriteID: eddb4754525218041b4947488402d093
@@ -529,6 +521,27 @@ TextureImporter:
       bones: []
       spriteID: a57dedd9159f80f478e4b5abd7bbfe82
       internalID: 1399895325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilemap2_9
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 160
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9d77cc39be8bec4f8024675edefc0bb
+      internalID: -1994227651
       vertices: []
       indices: 
       edges: []
