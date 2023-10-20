@@ -8,6 +8,7 @@ public class playerController : MonoBehaviour
     public Rigidbody2D rb;
     public float speed;
     public gameManager gameManager;
+    public GameObject weaponObj;
 
     private Vector2 movement;
     void Start()
@@ -24,6 +25,7 @@ public class playerController : MonoBehaviour
         animator.SetBool("isrun", (movement.x != 0 || movement.y != 0));
 
         shooter();
+        weaponFlmouse();
     }
 
     private void FixedUpdate()
@@ -50,4 +52,13 @@ public class playerController : MonoBehaviour
         }
     }
 
+    public void weaponFlmouse()
+    {
+        Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition).normalized;
+        pos.z = 0f;
+        pos.x = Mathf.Clamp(pos.x, -0.5f, 0.5f);
+        pos.y = Mathf.Clamp(pos.y, -0.5f, 0.3f);
+        Vector3 newpos = pos + this.transform.position;
+        weaponObj.transform.position = new Vector2(newpos.x, newpos.y+0.4f);
+    }
 }

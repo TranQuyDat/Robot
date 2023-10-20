@@ -45,7 +45,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 48
@@ -395,7 +395,7 @@ TextureImporter:
       name: tilemap2_17
       rect:
         serializedVersion: 2
-        x: 96
+        x: 97
         y: 98
         width: 48
         height: 48
@@ -429,35 +429,6 @@ TextureImporter:
       bones: []
       spriteID: 2ae1f3663b419c44db9be274bae02836
       internalID: -1922700157
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tilemap2_20
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 112
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -24, y: 24}
-        - {x: -24, y: -24}
-        - {x: 24, y: -24}
-        - {x: 24, y: 24}
-      physicsShape:
-      - - {x: -24, y: 24}
-        - {x: -24, y: -24}
-        - {x: 24, y: -24}
-        - {x: 24, y: 24}
-      tessellationDetail: 0
-      bones: []
-      spriteID: eddb4754525218041b4947488402d093
-      internalID: 2116004086
       vertices: []
       indices: 
       edges: []
@@ -530,14 +501,24 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 320
-        y: 160
+        y: 112
         width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.48066297}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
+      outline:
+      - - {x: -17, y: 24}
+        - {x: -24, y: 19}
+        - {x: -24, y: -24}
+        - {x: 24, y: -24}
+        - {x: 24, y: 24}
+      physicsShape:
+      - - {x: -17, y: 24}
+        - {x: -24, y: 19}
+        - {x: -24, y: -24}
+        - {x: 24, y: -24}
+        - {x: 24, y: 24}
       tessellationDetail: 0
       bones: []
       spriteID: b9d77cc39be8bec4f8024675edefc0bb
