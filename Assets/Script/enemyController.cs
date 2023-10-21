@@ -8,9 +8,25 @@ public class enemyController : MonoBehaviour
     public float distance;
     public float speed;
 
+    public List<Detector> detectors;
+    public AiData aiData;
+    public float timedelay  = 0.05f;
+
+    private void Start()
+    {
+        InvokeRepeating("performdetection",0, timedelay);
+    }
     private void Update()
     {
-        Aienemy();
+       // Aienemy();
+    }
+
+    private void performdetection()
+    {
+        foreach(Detector detector in detectors)
+        {
+            detector.Detect(aiData);
+        }
     }
     public void Aienemy()
     {
