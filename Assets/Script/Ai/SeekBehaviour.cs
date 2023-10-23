@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class SeekBehaviour : SteeringBehaviour
 {
-    public float targetThreshold;
+    public float targetThreshold = 0.2f;
     public bool showGizmos = true;
     bool reachedLastTarget = true;
-    public Vector2 targetPositionCached;
-    public float[] interestsTemp;
+    Vector2 targetPositionCached;
+    float[] interestsTemp;
     public override (float[] danger, float[] interest) GetSteering(float[] danger, float[] interest, AiData aiData)
     {
         if (reachedLastTarget == true)
@@ -61,6 +61,7 @@ public class SeekBehaviour : SteeringBehaviour
     {
         if (!showGizmos) return;
         Gizmos.DrawSphere(targetPositionCached, 0.2f);
+        Gizmos.DrawWireSphere(transform.position, targetThreshold);
         if(Application.isPlaying && interestsTemp != null)
         {
             Gizmos.color = Color.green;

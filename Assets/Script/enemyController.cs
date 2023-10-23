@@ -7,7 +7,8 @@ public class enemyController : MonoBehaviour
     public GameObject player;
     public float distance;
     public float speed;
-
+    public List<SteeringBehaviour> steeringBehaviours;
+    public ContextSolver contexsolver;
     public List<Detector> detectors;
     public AiData aiData;
     public float timedelay  = 0.05f;
@@ -18,7 +19,7 @@ public class enemyController : MonoBehaviour
     }
     private void Update()
     {
-       // Aienemy();
+        Aienemy();
     }
 
     private void performdetection()
@@ -27,14 +28,15 @@ public class enemyController : MonoBehaviour
         {
             detector.Detect(aiData);
         }
+
+       
     }
     public void Aienemy()
     {
         float dis = Vector2.Distance(this.transform.position, player.transform.position);
 
         if (dis > distance) return;
-        transform.position = Vector2.MoveTowards(transform.position,
-            player.transform.position, speed * Time.deltaTime);
+        transform.Translate(contexsolver.GetDirectionToMove(steeringBehaviours, aiData)*speed*Time.deltaTime);
 
     }
 }

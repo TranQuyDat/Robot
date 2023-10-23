@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ObstacleAvoidance : SteeringBehaviour
 {
-    public float radius, agentColliderSize = 0.6f;
-    public float[] dangerResultTemp = null;
-    public bool showGizmos;
+    public float radius  = 2f, agentColliderSize = 0.6f;
+    float[] dangerResultTemp = null;
+    public bool showGizmos = true;
 
     public override (float[] danger, float[] interest) GetSteering(float[] danger, float[] interest, AiData aiData)
     {
