@@ -18,6 +18,10 @@ public class gameManager : MonoBehaviour
 
     public void shooting_player(Vector3 pos)
     {
-        projectileManager.sPawnPrjt(pos);
+        projectileManager.sPawnPrjt_player(pos, "projectileBlue");
+    }
+    public void shooting_enemy(Vector3 pos)
+    {
+        projectileManager.sPawnPrjt_enemy(pos, "projectileBlue");
     }
 }

@@ -16,8 +16,6 @@ public class ObstacleAvoidance : SteeringBehaviour
                 obs.ClosestPoint(transform.position) - (Vector2)transform.position;
             float distanceToObstacle = directionToObstacle.magnitude;
 
-            float weight = distanceToObstacle < agentColliderSize ? 1 :
-                (radius - distanceToObstacle) / radius;
 
             Vector2 directionToObstacleNormalized = directionToObstacle.normalized;
             for (int i = 0; i < Directions.eightDirection.Count; i++)

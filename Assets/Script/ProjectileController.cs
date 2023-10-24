@@ -19,7 +19,7 @@ public class ProjectileController : MonoBehaviour
     private void Update()
     {
         tranForm_prjt();
-        Debug.Log("direction : "+  shootDirection);
+        //Debug.Log("direction : "+  shootDirection);
     }
 
     private void tranForm_prjt()

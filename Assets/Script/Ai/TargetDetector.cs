@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TargetDetector : Detector
 {
-    public float detectRadius = 5;
+    public float detectRadius = 6;
     public LayerMask obstacleLayer, TargetLayer;
 
     public bool showGizmos = true;
