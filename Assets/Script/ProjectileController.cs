@@ -10,8 +10,12 @@ public class ProjectileController : MonoBehaviour
     public Vector3 posEnd;
     public Rigidbody2D rb;
     Vector3 shootDirection;
+    gameManager gameManager;
+    [HideInInspector]
+    public GameObject parent;
     void Start()
     {
+        gameManager = GameObject.FindAnyObjectByType<gameManager>().GetComponent<gameManager>();
         StartCoroutine(timelife());
         shootDirection = (posEnd - transform.position).normalized;
     }
@@ -29,9 +33,18 @@ public class ProjectileController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("wall"))
+        if (this.gameObject.CompareTag("bullet_player") &&
+            (collision.CompareTag("wall")|| collision.CompareTag("enemy"))
+            )
         {
-            Destroy(this.gameObject);
+            gameManager.destroyProjtofPlayer(this.gameObject);
+        }
+        
+        if (this.gameObject.CompareTag("bullet_enemy") &&
+            (collision.CompareTag("wall")||collision.CompareTag("Player"))
+            )
+        {
+            gameManager.destroyProjtofEnemy(this.gameObject, parent);
         }
     }
     public IEnumerator timelife()
@@ -39,6 +52,11 @@ public class ProjectileController : MonoBehaviour
         timeLife = Random.Range(3f, 7f);
         yield return new WaitForSeconds(timeLife);
         Debug.Log("this ok;");
-        Destroy(this.gameObject);
+        if (this.gameObject.CompareTag("bullet_player"))
+        {
+            gameManager.destroyProjtofPlayer(this.gameObject);
+            yield return 0;
+        }
+        gameManager.destroyProjtofEnemy(this.gameObject, parent);
     }
 }

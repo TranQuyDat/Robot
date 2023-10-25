@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 117070486549793199}
   - component: {fileID: 5823180575488673782}
   - component: {fileID: 6295907163213593958}
-  m_Layer: 0
-  m_Name: projectileBlue
-  m_TagString: Untagged
+  m_Layer: 8
+  m_Name: P_projectileRed
+  m_TagString: bullet_player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1153741601, guid: 226c1d73cdabe72498db65e5d8b3a978, type: 3}
+  m_Sprite: {fileID: -1264717276, guid: 226c1d73cdabe72498db65e5d8b3a978, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

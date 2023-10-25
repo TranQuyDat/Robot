@@ -4,24 +4,28 @@ using UnityEngine;
 
 public class enemyController : MonoBehaviour
 {
-    public GameObject player;
-    public float distanceToAtk_shoot = 4;
-    public float distanceToAtk_melee = 2;
-    public float speed = 2;
-    public List<SteeringBehaviour> steeringBehaviours;
-    public ContextSolver contexsolver;
-    public List<Detector> detectors;
-    public AiData aiData;
 
-    public float timedelay  = 0.05f;
-    
-    public bool showgizmos = true;
-    public gameManager gameManager;
-
-    public Animator animator;
+    [Header("SteeringBehaviours,contexsolver,detectors")]
+        public float distanceToAtk_shoot = 4;
+        public float distanceToAtk_melee = 2;
+        public List<SteeringBehaviour> steeringBehaviours;
+        public ContextSolver contexsolver;
+        public List<Detector> detectors;
+        public AiData aiData;
+    [Header("********Defaulvalue**********")]
+        new  public GameObject player;
+        public float speed = 2;
+        public float timedelay  = 0.05f;
+        public bool showgizmos = true;
+        public gameManager gameManager;
+        public Animator animator;
+        public Transform posStart;
+    [Header("********INFO**********")]
+        [SerializeField] private float HP;
+        
 
     bool isAtk = false;
-    bool isAtkshoot = true;
+    bool isshooted = false;
     Collider2D trigercollider;
     Vector2 movement;
     private void Start()
@@ -31,7 +35,10 @@ public class enemyController : MonoBehaviour
     }
     private void Update()
     {
-        
+        if(player == null)
+        {
+            player = new GameObject();
+        }
         Aienemy();
     }
 
@@ -67,6 +74,7 @@ public class enemyController : MonoBehaviour
             animator.SetBool("isrun", false);
             return;
         }
+        if (!isshooted) return;
         speed = 2;
         animator.SetBool("isAtkShoot", false);
         animator.SetBool("isAtkMelee", false);
@@ -84,11 +92,13 @@ public class enemyController : MonoBehaviour
     }
     public void atk(float dis)
     {
+        if (aiData.targets == null) return;
         if (distanceToAtk_melee < dis && dis <= distanceToAtk_shoot)
         {
             isAtk = true;
             speed = 0;
-            Atkshoot();
+            
+            Invoke("Atkshoot",1f);
         }
         else if (dis > distanceToAtk_shoot)
         {
@@ -112,7 +122,23 @@ public class enemyController : MonoBehaviour
             Atkmelee();
             Debug.Log(isAtk);
         }
+
+        if (collision.CompareTag("bullet_player"))
+        {
+            HP = HP - 1;
+            enemyDead();
+            Debug.Log(HP);
+        }
         
+    }
+
+    public void enemyDead()
+    {
+        if (HP <= 0)
+        {
+            Debug.Log("enemy dead");
+            Destroy(this.gameObject);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -121,22 +147,22 @@ public class enemyController : MonoBehaviour
     }
     public void Atkshoot()
     {
-        if (isAtkshoot)
-        {
-            isAtkshoot = false;
-            animator.SetBool("isAtkMelee", false);
-            animator.SetBool("isAtkShoot", true);
-            Debug.Log("atk shoot");
-            gameManager.shooting_enemy(player.transform.position);
-            StartCoroutine(waitTosetBoolshoot(true));
-        }
+        isshooted = false;
+        animator.SetBool("isAtkMelee", false);
+        animator.SetBool("isAtkShoot", true);
+        Invoke("shooting", 2f);
+        CancelInvoke("Atkshoot");
     }
 
-    IEnumerator waitTosetBoolshoot(bool value)
+    public void shooting()
     {
-        yield return new WaitForSeconds(2f);
-        isAtkshoot = value;
+        animator.SetBool("isAtkShoot", false);
+        gameManager.shooting_Enemy(player.transform.position, "E_projectileGreen", this.gameObject, posStart);
+        isshooted = true;
+        CancelInvoke("shooting");
+        
     }
+
     public void Atkmelee()
     {
         animator.SetBool("isAtkShoot", false);

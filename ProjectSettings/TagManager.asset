@@ -7,6 +7,8 @@ TagManager:
   - wall
   - circleLimit
   - enemy
+  - bullet_enemy
+  - bullet_player
   layers:
   - Default
   - TransparentFX
@@ -16,8 +18,8 @@ TagManager:
   - UI
   - obstacle
   - enemy
-  - 
-  - 
+  - bullet_player
+  - bullet_enemy
   - 
   - 
   - 

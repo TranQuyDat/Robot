@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class playerController : MonoBehaviour
 {
+    [Header("********Default values*******")]
     public Animator animator;
     public Rigidbody2D rb;
     public float speed;
     public gameManager gameManager;
     public GameObject weaponObj;
-
+    [Header("*********INFO***********")]
+    [SerializeField] private float HP;
     private Vector2 movement;
     void Start()
     {
@@ -48,7 +50,7 @@ public class playerController : MonoBehaviour
         {
             Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             pos.z = 0f;
-            gameManager.shooting_player(pos);
+            gameManager.shooting_Player(pos, "P_projectileRed");
         }
     }
 
@@ -60,5 +62,23 @@ public class playerController : MonoBehaviour
         pos.y = Mathf.Clamp(pos.y, -0.5f, 0.3f);
         Vector3 newpos = pos + this.transform.position;
         weaponObj.transform.position = new Vector2(newpos.x, newpos.y+0.4f);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("bullet_enemy"))
+        {
+            HP = HP - 1;
+            playerDead();
+        }
+    }
+
+    public void playerDead()
+    {
+        if (HP <= 0)
+        {
+            Debug.Log("player dead");
+            Destroy(this.gameObject);
+        }
     }
 }

@@ -2383,10 +2383,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ba9d423b875f524e8285517faa0bdd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  posStart_player: {fileID: 333971891}
-  posStart_enemy: {fileID: 1730451459}
-  prjts:
+  P_prjts:
   - {fileID: 2568746862395463348, guid: 9afc7d0532caa82418a9fcf3776eb258, type: 3}
+  - {fileID: 2568746862395463348, guid: 3dc11c60bf2d0dc4c83f8aa34bc7ce9c, type: 3}
+  E_prjts:
+  - {fileID: 2568746862395463348, guid: 32a48116f975508419e83fefd01274dd, type: 3}
+  - {fileID: 2568746862395463348, guid: 8ecf921c278a7d445a99e1973691a2ce, type: 3}
+  demo_poolingProjts: []
+  P_poolingProjt:
+    lisactive: []
+    lisNotactive: []
+    posStart: {fileID: 333971891}
+    obj: {fileID: 2085321749}
 --- !u!114 &511311649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2413,7 +2421,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
@@ -2673,7 +2681,7 @@ GameObject:
   - component: {fileID: 1418551222}
   m_Layer: 7
   m_Name: Trigger
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2693,8 +2701,8 @@ Transform:
   m_Father: {fileID: 1915230627}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &1418551222
-CircleCollider2D:
+--- !u!70 &1418551222
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2725,9 +2733,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.000000059604645, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.67594904
+  m_Offset: {x: -0.009885187, y: 0.04942543}
+  m_Size: {x: 0.8558693, y: 0.64828265}
+  m_Direction: 1
 --- !u!1 &1531647714
 GameObject:
   m_ObjectHideFlags: 0
@@ -5499,7 +5507,7 @@ Transform:
   - {fileID: 927741232}
   - {fileID: 1730451459}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1915230628
 MonoBehaviour:
@@ -5513,10 +5521,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 871a08fcc82d05d49aadf20915371b7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 2085321749}
   distanceToAtk_shoot: 4
   distanceToAtk_melee: 2
-  speed: 2
   steeringBehaviours:
   - {fileID: 2023918602}
   - {fileID: 908707700}
@@ -5525,10 +5531,14 @@ MonoBehaviour:
   - {fileID: 153463145}
   - {fileID: 1531647716}
   aiData: {fileID: 1915230631}
+  player: {fileID: 2085321749}
+  speed: 2
   timedelay: 0.05
   showgizmos: 1
   gameManager: {fileID: 511311649}
   animator: {fileID: 1915230625}
+  posStart: {fileID: 1730451459}
+  HP: 5
 --- !u!61 &1915230629
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5766,18 +5776,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4064228811312358039, guid: e9cd9f75ccbb0cf4c90f0439f26d1c8f, type: 3}
-      propertyPath: m_Name
-      value: player
-      objectReference: {fileID: 0}
-    - target: {fileID: 4064228811312358039, guid: e9cd9f75ccbb0cf4c90f0439f26d1c8f, type: 3}
+    - target: {fileID: 552663365516052291, guid: e9cd9f75ccbb0cf4c90f0439f26d1c8f, type: 3}
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 4064228811312358039, guid: e9cd9f75ccbb0cf4c90f0439f26d1c8f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
+      propertyPath: m_Name
+      value: player
       objectReference: {fileID: 0}
+    - target: {fileID: 5323564596436133182, guid: e9cd9f75ccbb0cf4c90f0439f26d1c8f, type: 3}
+      propertyPath: HP
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5323564596436133182, guid: e9cd9f75ccbb0cf4c90f0439f26d1c8f, type: 3}
+      propertyPath: posStart
+      value: 
+      objectReference: {fileID: 333971891}
     - target: {fileID: 5323564596436133182, guid: e9cd9f75ccbb0cf4c90f0439f26d1c8f, type: 3}
       propertyPath: gameManager
       value: 
