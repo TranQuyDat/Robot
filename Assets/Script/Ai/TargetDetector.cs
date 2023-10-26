@@ -18,7 +18,7 @@ public class TargetDetector : Detector
         {
             Vector2 direction = (playerCollider.transform.position - transform.position).normalized;
             RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, detectRadius, obstacleLayer);
-            if (hit.collider != null && TargetLayer.value == (1<<hit.collider.gameObject.layer))
+            if (hit.collider != null && (TargetLayer & (1 << hit.collider.gameObject.layer)) != 0)
             {
                 colliders = new List<Transform>() { playerCollider.transform };
             }

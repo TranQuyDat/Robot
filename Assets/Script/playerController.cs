@@ -56,7 +56,7 @@ public class playerController : MonoBehaviour
 
     public void weaponFlmouse()
     {
-        Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition).normalized;
+        Vector3 pos = (Camera.main.ScreenToWorldPoint(Input.mousePosition)- this.transform.position).normalized;
         pos.z = 0f;
         pos.x = Mathf.Clamp(pos.x, -0.5f, 0.5f);
         pos.y = Mathf.Clamp(pos.y, -0.5f, 0.3f);
@@ -66,10 +66,11 @@ public class playerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("bullet_enemy"))
+        if (collision.CompareTag("bullet_enemy")|| collision.CompareTag("E_hitbox"))
         {
             HP = HP - 1;
             playerDead();
+
         }
     }
 

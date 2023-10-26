@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4605125112362808965}
   m_Layer: 3
   m_Name: trigger
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -64,7 +64,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.026456296, y: 0.0106906295}
+  m_Offset: {x: -0.027733505, y: -0.156919}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -75,7 +75,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.50901496, y: 0.96470296}
+  m_Size: {x: 0.5134438, y: 0.7182555}
   m_EdgeRadius: 0
 --- !u!1 &650387103501218457
 GameObject:
@@ -196,7 +196,7 @@ GameObject:
   - component: {fileID: 3820691803173549879}
   - component: {fileID: 5323564596436133182}
   - component: {fileID: 7978679410535988206}
-  - component: {fileID: 508915135986525984}
+  - component: {fileID: 6848168041723768433}
   m_Layer: 3
   m_Name: player
   m_TagString: Player
@@ -311,6 +311,7 @@ MonoBehaviour:
   speed: 3
   gameManager: {fileID: 0}
   weaponObj: {fileID: 650387103501218457}
+  HP: 100
 --- !u!50 &7978679410535988206
 Rigidbody2D:
   serializedVersion: 4
@@ -324,7 +325,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 2
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -336,10 +337,10 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
---- !u!58 &508915135986525984
-CircleCollider2D:
+--- !u!61 &6848168041723768433
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -370,6 +371,16 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.004016787, y: 0.16659029}
+  m_Offset: {x: -0.011037052, y: 0.18845606}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.16294177
+  m_Size: {x: 0.5217327, y: 0.37691212}
+  m_EdgeRadius: 0

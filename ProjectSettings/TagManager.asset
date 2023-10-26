@@ -9,6 +9,7 @@ TagManager:
   - enemy
   - bullet_enemy
   - bullet_player
+  - E_hitbox
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - enemy
   - bullet_player
   - bullet_enemy
-  - 
+  - wall
   - 
   - 
   - 

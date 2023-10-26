@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class gameManager : MonoBehaviour
 {
+    public Camera Maincamera;
+    public GameObject player;
+    [Range(0f,1f)] public float speedcamere;
     public ProjectileManager projectileManager;
     void Start()
     {
@@ -13,7 +16,12 @@ public class gameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if ((Vector2)player.transform.position != (Vector2)Maincamera.transform.position)
+        {
+            Vector3 v = new Vector3(player.transform.position.x * speedcamere 
+                , player.transform.position.y * speedcamere , -10f);
+            Maincamera.transform.position = v  ;
+        }
     }
 
     public void shooting_Player(Vector3 pos, string prjtname)

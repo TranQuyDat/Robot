@@ -31,7 +31,7 @@ public class poolingProjt
 
     public void getPrjt(ListDictionary prjts, string prjtname, Vector2 pos)
     {
-        if (obj == null) return;
+        if (obj == null || pos == null) return;
         GameObject projt;
         if (lisNotactive == null || lisNotactive.Count<=0)
         {

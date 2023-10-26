@@ -24,6 +24,8 @@ public class SeekBehaviour : SteeringBehaviour
                 reachedLastTarget = false;
                 aiData.currentTarget = aiData.targets.OrderBy(target =>
                 Vector2.Distance(target.position, transform.position)).FirstOrDefault();
+                Vector2 v = aiData.currentTarget.position;
+                //aiData.currentTarget.position = new(v.x, v.y + 0.4f);
             }
         }
 

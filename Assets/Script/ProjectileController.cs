@@ -8,6 +8,7 @@ public class ProjectileController : MonoBehaviour
     public float speed;
     [HideInInspector]
     public Vector3 posEnd;
+    Vector3 cur_posEnd;
     public Rigidbody2D rb;
     Vector3 shootDirection;
     gameManager gameManager;
@@ -18,6 +19,7 @@ public class ProjectileController : MonoBehaviour
         gameManager = GameObject.FindAnyObjectByType<gameManager>().GetComponent<gameManager>();
         StartCoroutine(timelife());
         shootDirection = (posEnd - transform.position).normalized;
+        cur_posEnd = posEnd;
     }
 
     private void Update()
@@ -28,7 +30,12 @@ public class ProjectileController : MonoBehaviour
 
     private void tranForm_prjt()
     {
-        transform.position = transform.position + shootDirection * speed * Time.deltaTime;
+        if(cur_posEnd != posEnd)
+        {
+            shootDirection = (posEnd - transform.position).normalized;
+            cur_posEnd = posEnd;
+        }
+        transform.Translate(shootDirection * speed * Time.deltaTime);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -55,8 +62,10 @@ public class ProjectileController : MonoBehaviour
         if (this.gameObject.CompareTag("bullet_player"))
         {
             gameManager.destroyProjtofPlayer(this.gameObject);
-            yield return 0;
         }
-        gameManager.destroyProjtofEnemy(this.gameObject, parent);
+        if (this.gameObject.CompareTag("bullet_enemy"))
+        {
+            gameManager.destroyProjtofEnemy(this.gameObject, parent);
+        }
     }
 }

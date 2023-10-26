@@ -15,7 +15,7 @@ public class enemyController : MonoBehaviour
     [Header("********Defaulvalue**********")]
         new  public GameObject player;
         public float speed = 2;
-        public float timedelay  = 0.05f;
+        public float timedelay  = 0.03f;
         public bool showgizmos = true;
         public gameManager gameManager;
         public Animator animator;
@@ -69,6 +69,8 @@ public class enemyController : MonoBehaviour
     }
     public void moving()
     {
+        Vector3 direction = contexsolver.
+            GetDirectionToMove(steeringBehaviours, aiData) * speed * Time.deltaTime;
         if (isAtk)
         {
             animator.SetBool("isrun", false);
@@ -79,8 +81,7 @@ public class enemyController : MonoBehaviour
         animator.SetBool("isAtkShoot", false);
         animator.SetBool("isAtkMelee", false);
         animator.SetBool("isrun", isrunning());
-        transform.Translate(contexsolver.
-            GetDirectionToMove(steeringBehaviours, aiData) * speed * Time.deltaTime);
+        transform.Translate(direction);
     }
 
     public void flip()
@@ -113,7 +114,7 @@ public class enemyController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerSay2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
@@ -122,16 +123,25 @@ public class enemyController : MonoBehaviour
             Atkmelee();
             Debug.Log(isAtk);
         }
-
+        else
+        {
+            animator.SetBool("isAtkMelee", false);
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
         if (collision.CompareTag("bullet_player"))
         {
             HP = HP - 1;
             enemyDead();
             Debug.Log(HP);
         }
-        
-    }
 
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        trigercollider = null;
+    }
     public void enemyDead()
     {
         if (HP <= 0)
@@ -141,10 +151,7 @@ public class enemyController : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        trigercollider = null;
-    }
+
     public void Atkshoot()
     {
         isshooted = false;
