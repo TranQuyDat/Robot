@@ -41,7 +41,7 @@ public class playerController : MonoBehaviour
         this.transform.localScale = new Vector2(
             (movement.x==0 )? scalex :
             (movement.x > 0)? Mathf.Abs(scalex): Mathf.Abs(scalex) * -1
-            , 1f);
+            , this.transform.localScale.y);
     }
 
     public void shooter()
@@ -56,12 +56,12 @@ public class playerController : MonoBehaviour
 
     public void weaponFlmouse()
     {
-        Vector3 pos = (Camera.main.ScreenToWorldPoint(Input.mousePosition)- this.transform.position).normalized;
-        pos.z = 0f;
-        pos.x = Mathf.Clamp(pos.x, -0.5f, 0.5f);
-        pos.y = Mathf.Clamp(pos.y, -0.5f, 0.3f);
-        Vector3 newpos = pos + this.transform.position;
-        weaponObj.transform.position = new Vector2(newpos.x, newpos.y+0.4f);
+        Vector3 dirTomouse = (Camera.main.ScreenToWorldPoint(Input.mousePosition)- this.transform.position).normalized;
+        dirTomouse.z = 0f;
+        dirTomouse.x = Mathf.Clamp(dirTomouse.x, -0.2f, 0.2f) ;
+        dirTomouse.y = Mathf.Clamp(dirTomouse.y, -0.2f, 0.2f);
+        Vector3 newpos = dirTomouse + this.transform.position;
+        weaponObj.transform.position = new Vector2(newpos.x, newpos.y+0.2f);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -25,7 +25,7 @@ public class enemyController : MonoBehaviour
         
 
     bool isAtk = false;
-    bool isshooted = false;
+    bool isshooted = true;
     Collider2D trigercollider;
     Vector2 movement;
     private void Start()
@@ -89,12 +89,13 @@ public class enemyController : MonoBehaviour
         Vector2 direction = (player.transform.position - this.transform.position).normalized;
         float scalex = this.transform.localScale.x;
         this.transform.localScale = new Vector2((direction.x == 0) ? scalex :
-            (direction.x < 0) ? Mathf.Abs(scalex) * -1 : Mathf.Abs(scalex),1);;
+            (direction.x < 0) ? Mathf.Abs(scalex) * -1 : Mathf.Abs(scalex), this.transform.localScale.y);;
     }
     public void atk(float dis)
     {
         if (aiData.targets == null) return;
-        if (distanceToAtk_melee < dis && dis <= distanceToAtk_shoot)
+        if (distanceToAtk_melee < dis && dis <= distanceToAtk_shoot
+            && aiData.targets.Count>0)
         {
             isAtk = true;
             speed = 0;
@@ -114,7 +115,7 @@ public class enemyController : MonoBehaviour
         }
     }
 
-    private void OnTriggerSay2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {

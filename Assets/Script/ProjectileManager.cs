@@ -95,17 +95,9 @@ public class ProjectileManager : MonoBehaviour
 
     public void sPawnPrjt_player( Vector3 pos,string prjtname )
     {
-        /*posStart_player.position = 
-            new Vector3(posStart_player.position.x, posStart_player.position.y + 0.8f, 0);
-
-        GameObject projt = Instantiate((GameObject)P_listPrjt[prjtname],
-            posStart_player.position, Quaternion.identity,transform.parent);
-
-        ProjectileController prjtCtl =  projt.GetComponent<ProjectileController>();
-        prjtCtl.posEnd = pos;*/
         P_poolingProjt.posStart.position = 
             new Vector2(P_poolingProjt.posStart.position.x, 
-            P_poolingProjt.posStart.position.y + 0.8f);
+            P_poolingProjt.posStart.position.y + 0.4f);
 
         P_poolingProjt.getPrjt(P_listPrjt, prjtname, pos);
 
@@ -113,13 +105,7 @@ public class ProjectileManager : MonoBehaviour
 
     public void sPawnPrjt_enemy(Vector3 pos, string prjtname, GameObject obj, Transform posStart)
     {
-        /* GameObject projt = Instantiate((GameObject)E_listPrjt[prjtname],
-             posStart_enemy.position, Quaternion.identity, transform.parent);
-
-         ProjectileController prjtCtl = projt.GetComponent<ProjectileController>();
-         pos.y = pos.y + 0.8f;
-         prjtCtl.posEnd = pos;*/
-        pos.y = pos.y + 0.8f;
+        pos.y = pos.y + 0.2f;
         bool washasPool = false;
         poolingProjt pooling = new poolingProjt(); ;
         foreach (poolingProjt pool in E_poolingProjts)
