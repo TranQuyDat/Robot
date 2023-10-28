@@ -141,7 +141,7 @@ public class ProjectileManager : MonoBehaviour
     {
         foreach (poolingProjt pool in E_poolingProjts)
         {
-            if (pool.obj.tag == obj.tag)
+            if (obj !=null && pool.obj.tag == obj.tag)
             {
                 pool.delete(projt);
                 return;
