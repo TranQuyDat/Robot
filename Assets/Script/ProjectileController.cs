@@ -13,7 +13,7 @@ public class ProjectileController : MonoBehaviour
     Vector3 shootDirection;
     gameManager gameManager;
     [HideInInspector]
-    public GameObject parent;
+    public string parent;
     void Start()
     {
         gameManager = GameObject.FindAnyObjectByType<gameManager>().GetComponent<gameManager>();

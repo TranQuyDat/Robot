@@ -30,6 +30,8 @@ public class enemyController : MonoBehaviour
     Vector2 movement;
     private void Start()
     {
+        gameManager = FindAnyObjectByType<gameManager>();
+        player = FindAnyObjectByType<playerController>().gameObject;
         InvokeRepeating("performdetection",0, timedelay);
         movement = this.transform.position;
     }

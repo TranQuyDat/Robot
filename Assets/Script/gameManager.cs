@@ -33,9 +33,9 @@ public class gameManager : MonoBehaviour
         projectileManager.sPawnPrjt_enemy(pos, prjtname, obj, posStart);
     }
 
-    public void destroyProjtofEnemy(GameObject projt, GameObject obj)
+    public void destroyProjtofEnemy(GameObject projt, string objtag)
     {
-        projectileManager.deletePrjt_Enemy(projt, obj);
+        projectileManager.deletePrjt_Enemy(projt, objtag);
     }
     public void destroyProjtofPlayer(GameObject projt)
     {

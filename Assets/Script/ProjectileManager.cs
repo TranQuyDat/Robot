@@ -10,7 +10,7 @@ public class poolingProjt
     public List<GameObject> lisactive;
     public List<GameObject> lisNotactive;
     public Transform posStart;
-    public GameObject obj = null;
+    public string obj ;
 
 
     public poolingProjt()
@@ -71,6 +71,8 @@ public class ProjectileManager : MonoBehaviour
     public List<poolingProjt> E_poolingProjts;
     public poolingProjt P_poolingProjt  ;
 
+
+    string tagobj;
     private void Start()
     {
         E_poolingProjts = new List<poolingProjt>();
@@ -111,7 +113,7 @@ public class ProjectileManager : MonoBehaviour
         foreach (poolingProjt pool in E_poolingProjts)
         {
             if (E_poolingProjts == null || E_poolingProjts.Count <= 0) break;
-            if (pool.obj.tag == obj.tag)
+            if (pool.obj !=null && pool.obj == obj.tag)
             {
                 pooling = pool;
                 washasPool = true;
@@ -126,7 +128,7 @@ public class ProjectileManager : MonoBehaviour
             return;
         }
         E_poolingProjts.Add(pooling);
-        pooling.obj = obj;
+        pooling.obj = obj.tag;
         pooling.posStart = posStart;
         pooling.getPrjt(E_listPrjt, prjtname, pos);
         
@@ -137,11 +139,11 @@ public class ProjectileManager : MonoBehaviour
         P_poolingProjt.delete(projt);
     }
 
-    public void deletePrjt_Enemy(GameObject projt,GameObject obj)
+    public void deletePrjt_Enemy(GameObject projt,string objtag)
     {
         foreach (poolingProjt pool in E_poolingProjts)
         {
-            if (obj !=null && pool.obj.tag == obj.tag)
+            if ( pool.obj == objtag)
             {
                 pool.delete(projt);
                 return;
