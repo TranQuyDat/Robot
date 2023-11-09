@@ -2503,7 +2503,7 @@ MonoBehaviour:
     lisactive: []
     lisNotactive: []
     posStart: {fileID: 333971891}
-    obj: {fileID: 2085321749}
+    obj: 
 --- !u!114 &511311649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2957,7 +2957,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4732dd3354708142993d71ce05e74e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefapEnemy: {fileID: 1425976690090842174, guid: 63d1736474f61de4ea75a234311269f7, type: 3}
+  prefapEnemy:
+  - {fileID: 1425976690090842174, guid: 63d1736474f61de4ea75a234311269f7, type: 3}
   posSpawn:
   - {fileID: 181496244}
   - {fileID: 726527828}
@@ -2975,6 +2976,7 @@ MonoBehaviour:
   - {fileID: 873740889}
   timedelay: 2
   countEnemy: 5
+  poolingenemy: []
 --- !u!1 &1389591103
 GameObject:
   m_ObjectHideFlags: 0

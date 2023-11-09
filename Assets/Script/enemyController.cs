@@ -22,16 +22,18 @@ public class enemyController : MonoBehaviour
         public Transform posStart;
     [Header("********INFO**********")]
         [SerializeField] private float HP;
-        
 
+    EnemySpawner enemySpawner;
     bool isAtk = false;
     bool isshooted = true;
     Collider2D trigercollider;
     Vector2 movement;
+    bool isdead = false;
     private void Start()
     {
         gameManager = FindAnyObjectByType<gameManager>();
         player = FindAnyObjectByType<playerController>().gameObject;
+        enemySpawner = FindAnyObjectByType<EnemySpawner>();
         InvokeRepeating("performdetection",0, timedelay);
         movement = this.transform.position;
     }
@@ -40,6 +42,11 @@ public class enemyController : MonoBehaviour
         if(player == null)
         {
             player = new GameObject();
+        }
+
+        if (this.gameObject.active == true && isdead)
+        {
+            enemyRestart();
         }
         Aienemy();
     }
@@ -95,7 +102,10 @@ public class enemyController : MonoBehaviour
     }
     public void atk(float dis)
     {
-        if (aiData.targets == null) return;
+        if (aiData.targets == null ) 
+        {
+            return; 
+        }
         if (distanceToAtk_melee < dis && dis <= distanceToAtk_shoot
             && aiData.targets.Count>0)
         {
@@ -147,20 +157,31 @@ public class enemyController : MonoBehaviour
     }
     public void enemyDead()
     {
+        if (isdead == true) return;
         if (HP <= 0)
         {
             Debug.Log("enemy dead");
-            Destroy(this.gameObject);
+            enemySpawner.deleteEnemy(this.gameObject);
+            //Destroy(this.gameObject);
+            isdead = true;
         }
+    }
+    public void enemyRestart()
+    {
+        HP = 5;
+        isdead = false;
     }
 
 
     public void Atkshoot()
     {
-        isshooted = false;
-        animator.SetBool("isAtkMelee", false);
-        animator.SetBool("isAtkShoot", true);
-        Invoke("shooting", 2f);
+        if (!isdead)
+        {
+            isshooted = false;
+            animator.SetBool("isAtkMelee", false);
+            animator.SetBool("isAtkShoot", true);
+            Invoke("shooting", 2f);
+        }
         CancelInvoke("Atkshoot");
     }
 
